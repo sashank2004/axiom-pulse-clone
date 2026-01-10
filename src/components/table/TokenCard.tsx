@@ -13,6 +13,10 @@ function getRandomPct(seed: string, max = 20) {
   return Math.abs(hash) % (max + 1);
 }
 
+function getBondingPct(seed: string) {
+  return (getRandomPct(seed, 500) / 10).toFixed(2);
+}
+
 interface TokenCardProps {
   token: Token;
 }
@@ -21,55 +25,85 @@ export function TokenCard({ token }: TokenCardProps) {
   const router = useRouter();
 
   const stats = token.meta.stats ?? {
-  holdersPct: getRandomPct(token.meta.address + "h"),
-  smartPct: getRandomPct(token.meta.address + "s"),
-  sniperPct: getRandomPct(token.meta.address + "n"),
-};
+    holdersPct: getRandomPct(token.meta.address + "h"),
+    smartPct: getRandomPct(token.meta.address + "s"),
+    sniperPct: getRandomPct(token.meta.address + "n"),
+  };
 
+  const bondingPct = getBondingPct(token.meta.address);
 
   return (
     <div
-      onClick={() => router.push(`/meme/0xa99a49dc92ae27ffc996fad4f489a7fb8f8b4444`)}
-      className="cursor-pointer border-b border-[#1f242c] p-4 transition-colors hover:bg-[#141a21]"
+      onClick={() =>
+        router.push(`/meme/0xa99a49dc92ae27ffc996fad4f489a7fb8f8b4444`)
+      }
+      className="group relative cursor-pointer border-b border-[#1f242c] p-4 transition-colors hover:bg-[#141a21]"
     >
+      {/* BONDING PILL — CARD-ANCHORED (LIKE ORIGINAL) */}
+<div className="pointer-events-none absolute top-0 left-24 hidden group-hover:block z-50">
+  <div className="rounded-md bg-[#0f3d2e] px-3 py-1 text-xs font-medium text-green-400 shadow-lg">
+    Bonding: {bondingPct}%
+  </div>
+</div>
+
+
+      {/* BLUE BUTTON — CARD HOVER */}
+      <div className="absolute bottom-3 right-3 hidden group-hover:flex z-30">
+        <div className="flex h-6 w-8 items-center justify-center rounded-full bg-blue-500 text-white shadow-lg">
+          ⚡
+        </div>
+      </div>
+
       <div className="grid grid-cols-[72px_1fr_auto] gap-4">
         {/* LEFT */}
         <div className="flex flex-col items-center gap-2">
-          <div className="relative">
+          {/* IMAGE HOVER GROUP */}
+          <div className="group/image relative">
             <img
-  src={token.imageUrl}
-  alt={token.name}
-  className="h-19 w-19 rounded-lg border-2 border-green-500 object-cover"
-/>
+              src={token.imageUrl}
+              alt={token.name}
+              className="h-19 w-19 rounded-lg border-2 border-green-500 object-cover"
+            />
 
             <span className="absolute -bottom-1 -right-1 h-5 w-5 rounded-full border border-black bg-green-500" />
+
+            {/* BIG IMAGE — ESCAPES TABLE CLIPPING */}
+            <div
+              className="pointer-events-none fixed hidden group-hover/image:block z-[1000]"
+              style={{ marginTop: "8px" }}
+            >
+              <img
+                src={token.imageUrl}
+                alt={token.name}
+                className="h-60 w-80 rounded-lg border border-[#1f242c] object-cover shadow-2xl"
+              />
+            </div>
           </div>
 
           <span className="text-[11px] text-[var(--text-muted)]">
             {token.meta.shortAddress}
           </span>
 
-          {/* BELOW-ADDRESS STATS */}
-    <div className=" flex items-center gap-1 pl-22">
-      <div className="flex items-center gap-1 rounded-full bg-[#0f1720] px-2 py-[1px] text-[11px] text-green-400">
-        <span>👤</span>
-        <span>{stats.holdersPct}%</span>
-      </div>
+          {/* BELOW-ADDRESS STATS — UNCHANGED */}
+          <div className="flex items-center gap-1 pl-22">
+            <div className="flex items-center gap-1 rounded-full bg-[#0f1720] px-2 py-[1px] text-[11px] text-green-400">
+              <span>👤</span>
+              <span>{stats.holdersPct}%</span>
+            </div>
 
-      <div className="flex items-center gap-1 rounded-full bg-[#0f1720] px-2 py-[1px] text-[11px] text-cyan-400">
-        <span>🧠</span>
-        <span>{stats.smartPct}%</span>
-      </div>
+            <div className="flex items-center gap-1 rounded-full bg-[#0f1720] px-2 py-[1px] text-[11px] text-cyan-400">
+              <span>🧠</span>
+              <span>{stats.smartPct}%</span>
+            </div>
 
-      <div className="flex items-center gap-1 rounded-full bg-[#0f1720] px-2 py-[1px] text-[11px] text-yellow-400">
-        <span>🎯</span>
-        <span>{stats.sniperPct}%</span>
-      </div>
-    </div>
-
+            <div className="flex items-center gap-1 rounded-full bg-[#0f1720] px-2 py-[1px] text-[11px] text-yellow-400">
+              <span>🎯</span>
+              <span>{stats.sniperPct}%</span>
+            </div>
+          </div>
         </div>
 
-        {/* CENTER */}
+        {/* CENTER — UNCHANGED */}
         <div className="space-y-0">
           <div className="flex items-center gap-2">
             <span className="text-lg font-medium">
@@ -92,7 +126,7 @@ export function TokenCard({ token }: TokenCardProps) {
           </div>
         </div>
 
-        {/* RIGHT */}
+        {/* RIGHT — UNCHANGED */}
         <div className="text-right space-y-0">
           <AppTooltip label="Market Capitalization">
             <div
