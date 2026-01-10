@@ -3,6 +3,8 @@
 import { Token } from "@/types/token";
 import { AppTooltip } from "@/components/ui/Tooltip";
 import { useRouter } from "next/navigation";
+import { truncateText } from "@/utils/truncate";
+
 
 interface TokenCardProps {
   token: Token;
@@ -33,8 +35,8 @@ export function TokenCard({ token }: TokenCardProps) {
         <div className="space-y-1">
           {/* Name row */}
           <div className="flex items-center gap-2">
-            <span className="max-w-[180px] truncate whitespace-nowrap text-sm font-medium">
-  {token.name}
+            <span className="text-sm font-medium">
+  {truncateText(token.name, 7)}
 </span>
             <span className="text-xs text-gray-500">⧉</span>
           </div>
