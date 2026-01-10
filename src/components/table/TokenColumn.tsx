@@ -20,13 +20,14 @@ export function TokenColumn({
         withLeftBorder && "border-l border-[#1f242c]"
       )}
     >
-      {/* HEADER (fixed) */}
+      {/* HEADER */}
       <div className="shrink-0 border-b border-[#1f242c] px-4 py-3">
         <h2 className="text-sm font-medium text-gray-300">{title}</h2>
       </div>
 
       {/* SCROLL AREA */}
-      <div className="flex-1 overflow-y-auto axiom-scrollbar px-4 py-3 space-y-3">
+      <div className="flex-1 overflow-y-auto axiom-scrollbar">
+
         {tokens.map((token) => (
           <TokenCard key={token.id} token={token} />
         ))}
