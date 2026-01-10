@@ -1,4 +1,6 @@
 import { Token } from "@/types/token";
+import { AppTooltip } from "@/components/ui/Tooltip";
+
 
 interface TokenCardProps {
   token: Token;
@@ -31,16 +33,22 @@ export function TokenCard({ token }: TokenCardProps) {
 
         {/* Metrics */}
         <div className="text-right space-y-1">
-          <div className="text-sm font-medium">
+        <AppTooltip label="Market Capitalization">
+          <div className="text-sm font-medium cursor-help">
             MC ${token.metrics.marketCap.toLocaleString()}
           </div>
-          <div className="text-xs text-[var(--text-muted)]">
+        </AppTooltip>
+
+        <AppTooltip label="Trading Volume">
+          <div className="text-xs text-[var(--text-muted)] cursor-help">
             V ${token.metrics.volume.toLocaleString()}
           </div>
-          <div className="text-xs text-[var(--text-muted)]">
-            TX {token.metrics.txCount}
-          </div>
+        </AppTooltip>
+
+        <div className="text-xs text-[var(--text-muted)]">
+          TX {token.metrics.txCount}
         </div>
+      </div>
       </div>
     </div>
   );
