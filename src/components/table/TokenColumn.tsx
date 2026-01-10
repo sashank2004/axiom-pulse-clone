@@ -1,7 +1,7 @@
 import { Token } from "@/types/token";
 import { TokenCard } from "./TokenCard";
 import clsx from "clsx";
-import { columnHeaderActions } from "./columnHeaderActions";
+import { ColumnHeaderActions } from "./columnHeaderActions";
 
 interface TokenColumnProps {
   title: string;

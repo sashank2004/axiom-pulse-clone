@@ -1,6 +1,6 @@
 "use client";
 
-export function columnHeaderActions() {
+export function ColumnHeaderActions() {
   return (
     <div className="flex items-center gap-2 text-xs text-gray-400">
       
