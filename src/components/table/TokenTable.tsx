@@ -10,14 +10,16 @@ import { startTokenStream } from "@/services/tokenStream";
 export function TokenTable() {
   const [tokens, setTokens] = useState<Token[] | null>(null);
 
+  // Initial loading simulation
   useEffect(() => {
     const timeout = setTimeout(() => {
       setTokens(initialTokens);
-    }, 1000); // simulate initial fetch
+    }, 1000);
 
     return () => clearTimeout(timeout);
   }, []);
 
+  // Live updates
   useEffect(() => {
     if (!tokens) return;
     const stop = startTokenStream(tokens, setTokens);
@@ -26,7 +28,7 @@ export function TokenTable() {
 
   if (!tokens) {
     return (
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+      <div className="grid grid-cols-1 md:grid-cols-3 border border-[#1f242c] rounded-xl overflow-hidden">
         <TokenColumnSkeleton title="New Pairs" />
         <TokenColumnSkeleton title="Final Stretch" />
         <TokenColumnSkeleton title="Migrated" />
@@ -35,18 +37,22 @@ export function TokenTable() {
   }
 
   return (
-    <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+    <div className="grid grid-cols-1 md:grid-cols-3 border border-[#1f242c] rounded-xl overflow-hidden">
       <TokenColumn
         title="New Pairs"
         tokens={tokens.filter((t) => t.stage === "NEW")}
       />
+
       <TokenColumn
         title="Final Stretch"
         tokens={tokens.filter((t) => t.stage === "FINAL")}
+        withLeftBorder
       />
+
       <TokenColumn
         title="Migrated"
         tokens={tokens.filter((t) => t.stage === "MIGRATED")}
+        withLeftBorder
       />
     </div>
   );

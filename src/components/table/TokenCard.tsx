@@ -15,7 +15,7 @@ export function TokenCard({ token }: TokenCardProps) {
 
   return (
     <div
-      onClick={() => router.push(`/meme/${token.meta.address}`)}
+      onClick={() => router.push(`/meme/0xa99a49dc92ae27ffc996fad4f489a7fb8f8b4444`)}
       className="cursor-pointer rounded-xl bg-[var(--bg-secondary)] p-4 transition-colors hover:bg-[#1a1f26]"
     >
       <div className="grid grid-cols-[72px_1fr_auto] gap-4">

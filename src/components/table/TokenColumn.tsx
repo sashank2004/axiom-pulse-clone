@@ -1,23 +1,36 @@
 import { Token } from "@/types/token";
 import { TokenCard } from "./TokenCard";
+import clsx from "clsx";
 
 interface TokenColumnProps {
   title: string;
   tokens: Token[];
+  withLeftBorder?: boolean;
 }
 
-export function TokenColumn({ title, tokens }: TokenColumnProps) {
+export function TokenColumn({
+  title,
+  tokens,
+  withLeftBorder,
+}: TokenColumnProps) {
   return (
-    <div className="flex flex-col gap-4">
-      <h2 className="text-sm font-medium text-gray-300">
-        {title}
-      </h2>
+    <div
+      className={clsx(
+        "flex h-[calc(100vh-200px)] flex-col bg-[#0b0f14]",
+        withLeftBorder && "border-l border-[#1f242c]"
+      )}
+    >
+      {/* HEADER (fixed) */}
+      <div className="shrink-0 border-b border-[#1f242c] px-4 py-3">
+        <h2 className="text-sm font-medium text-gray-300">{title}</h2>
+      </div>
 
-          <div className="flex max-h-[calc(100vh-220px)] flex-col gap-3 overflow-y-auto">
-      {tokens.map((token) => (
-        <TokenCard key={token.id} token={token} />
-      ))}
-    </div>
+      {/* SCROLL AREA */}
+      <div className="flex-1 overflow-y-auto axiom-scrollbar px-4 py-3 space-y-3">
+        {tokens.map((token) => (
+          <TokenCard key={token.id} token={token} />
+        ))}
+      </div>
     </div>
   );
 }
