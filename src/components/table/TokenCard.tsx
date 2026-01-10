@@ -36,7 +36,12 @@ export function TokenCard({ token }: TokenCardProps) {
         {/* LEFT */}
         <div className="flex flex-col items-center gap-2">
           <div className="relative">
-            <div className="h-19 w-19 rounded-lg border-2 border-green-500 bg-gray-700" />
+            <img
+  src={token.imageUrl}
+  alt={token.name}
+  className="h-19 w-19 rounded-lg border-2 border-green-500 object-cover"
+/>
+
             <span className="absolute -bottom-1 -right-1 h-5 w-5 rounded-full border border-black bg-green-500" />
           </div>
 

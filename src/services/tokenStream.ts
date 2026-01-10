@@ -2,6 +2,19 @@ import { Token } from "@/types/token";
 
 let idCounter = 1000;
 
+const TOKEN_IMAGES = [
+  "/tokens/arrow.webp",
+  "/tokens/cat.webp",
+  "/tokens/images (1).jpg",
+  "/tokens/images.jpg",
+  "/tokens/ran.jpg",
+  "/tokens/random.jpg",
+];
+
+function getRandomTokenImage() {
+  return TOKEN_IMAGES[Math.floor(Math.random() * TOKEN_IMAGES.length)];
+}
+
 const TOKEN_NAMES = [
   "OrangeMan",
   "BananaDAO",
@@ -74,7 +87,7 @@ export function startTokenStream(
         id: `new-${idCounter}`,
         name: getRandomTokenName(),
         symbol: "NEW",
-        imageUrl: "/placeholder-token.png",
+        imageUrl: getRandomTokenImage(),
         stage: "NEW",
         meta: {
           address: `0x${Math.random().toString(16).slice(2, 10)}abcd`,
