@@ -1,12 +1,26 @@
 import { Token } from "@/types/token";
 
+const TOKEN_IMAGES = [
+  "/tokens/arrow.webp",
+  "/tokens/cat.webp",
+  "/tokens/images (1).jpg",
+  "/tokens/images.jpg",
+  "/tokens/ran.jpg",
+  "/tokens/random.jpg",
+];
+
+function getRandomTokenImage() {
+  return TOKEN_IMAGES[Math.floor(Math.random() * TOKEN_IMAGES.length)];
+}
+
+
 export const tokens: Token[] = [
   // ================= NEW PAIRS =================
   {
     id: "new-1",
     name: "AlphaPepe",
     symbol: "ALPHA",
-    imageUrl: "/placeholder-token.png",
+    imageUrl: getRandomTokenImage(),
     stage: "NEW",
     meta: {
       address: "0xaaa111",
@@ -24,7 +38,7 @@ export const tokens: Token[] = [
     id: "new-2",
     name: "BetaCoin",
     symbol: "BETA",
-    imageUrl: "/placeholder-token.png",
+    imageUrl: getRandomTokenImage(),
     stage: "NEW",
     meta: {
       address: "0xaaa222",
@@ -42,7 +56,7 @@ export const tokens: Token[] = [
     id: "new-3",
     name: "GammaX",
     symbol: "GAMMA",
-    imageUrl: "/placeholder-token.png",
+    imageUrl: getRandomTokenImage(),
     stage: "NEW",
     meta: {
       address: "0xaaa333",
@@ -60,7 +74,7 @@ export const tokens: Token[] = [
     id: "new-4",
     name: "DeltaDog",
     symbol: "DELTA",
-    imageUrl: "/placeholder-token.png",
+    imageUrl: getRandomTokenImage(),
     stage: "NEW",
     meta: {
       address: "0xaaa444",
@@ -80,7 +94,7 @@ export const tokens: Token[] = [
     id: "final-1",
     name: "MoonCat",
     symbol: "MOON",
-    imageUrl: "/placeholder-token.png",
+    imageUrl: getRandomTokenImage(),
     stage: "FINAL",
     meta: {
       address: "0xbbb111",
@@ -98,7 +112,7 @@ export const tokens: Token[] = [
     id: "final-2",
     name: "RocketInu",
     symbol: "RKT",
-    imageUrl: "/placeholder-token.png",
+    imageUrl: getRandomTokenImage(),
     stage: "FINAL",
     meta: {
       address: "0xbbb222",
@@ -116,7 +130,7 @@ export const tokens: Token[] = [
     id: "final-3",
     name: "StarBase",
     symbol: "STAR",
-    imageUrl: "/placeholder-token.png",
+    imageUrl: getRandomTokenImage(),
     stage: "FINAL",
     meta: {
       address: "0xbbb333",
@@ -134,7 +148,7 @@ export const tokens: Token[] = [
     id: "final-4",
     name: "NovaFi",
     symbol: "NOVA",
-    imageUrl: "/placeholder-token.png",
+    imageUrl: getRandomTokenImage(),
     stage: "FINAL",
     meta: {
       address: "0xbbb444",
@@ -154,7 +168,7 @@ export const tokens: Token[] = [
     id: "mig-1",
     name: "LegacyDAO",
     symbol: "LEG",
-    imageUrl: "/placeholder-token.png",
+    imageUrl: getRandomTokenImage(),
     stage: "MIGRATED",
     meta: {
       address: "0xccc111",
@@ -172,7 +186,7 @@ export const tokens: Token[] = [
     id: "mig-2",
     name: "OldChain",
     symbol: "OLD",
-    imageUrl: "/placeholder-token.png",
+    imageUrl: getRandomTokenImage(),
     stage: "MIGRATED",
     meta: {
       address: "0xccc222",
@@ -190,7 +204,7 @@ export const tokens: Token[] = [
     id: "mig-3",
     name: "ChainX",
     symbol: "CHX",
-    imageUrl: "/placeholder-token.png",
+    imageUrl: getRandomTokenImage(),
     stage: "MIGRATED",
     meta: {
       address: "0xccc333",
@@ -208,7 +222,7 @@ export const tokens: Token[] = [
     id: "mig-4",
     name: "VaultNet",
     symbol: "VLT",
-    imageUrl: "/placeholder-token.png",
+    imageUrl: getRandomTokenImage(),
     stage: "MIGRATED",
     meta: {
       address: "0xccc444",
