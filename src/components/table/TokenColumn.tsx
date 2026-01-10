@@ -1,6 +1,7 @@
 import { Token } from "@/types/token";
 import { TokenCard } from "./TokenCard";
 import clsx from "clsx";
+import { ColumnHeaderActions } from "./columnHeaderActions";
 
 interface TokenColumnProps {
   title: string;
@@ -21,8 +22,9 @@ export function TokenColumn({
       )}
     >
       {/* HEADER */}
-      <div className="shrink-0 border-b border-[#1f242c] px-4 py-3">
+       <div className="flex items-center justify-between border-b border-[#1f242c] px-3 py-2">
         <h2 className="text-sm font-medium text-gray-300">{title}</h2>
+         <ColumnHeaderActions />
       </div>
 
       {/* SCROLL AREA */}
