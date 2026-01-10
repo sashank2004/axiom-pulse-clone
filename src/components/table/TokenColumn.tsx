@@ -1,10 +1,12 @@
-import { TokenRow } from "./TokenRow";
+import { Token } from "@/types/token";
+import { TokenCard } from "./TokenCard";
 
 interface TokenColumnProps {
   title: string;
+  tokens: Token[];
 }
 
-export function TokenColumn({ title }: TokenColumnProps) {
+export function TokenColumn({ title, tokens }: TokenColumnProps) {
   return (
     <div className="flex flex-col gap-4">
       <h2 className="text-sm font-medium text-gray-300">
@@ -12,8 +14,8 @@ export function TokenColumn({ title }: TokenColumnProps) {
       </h2>
 
       <div className="flex flex-col gap-3">
-        {Array.from({ length: 5 }).map((_, i) => (
-          <TokenRow key={i} />
+        {tokens.map((token) => (
+          <TokenCard key={token.id} token={token} />
         ))}
       </div>
     </div>
