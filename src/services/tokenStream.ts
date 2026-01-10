@@ -2,6 +2,35 @@ import { Token } from "@/types/token";
 
 let idCounter = 1000;
 
+const TOKEN_NAMES = [
+  "OrangeMan",
+  "BananaDAO",
+  "MoonCat",
+  "PepeKing",
+  "BullRun",
+  "DragonCoin",
+  "CryptoHorse",
+  "GreenLeaf",
+  "MetaFox",
+  "ShibaMax",
+  "LuckyTiger",
+  "PandaSwap",
+  "GhostChain",
+  "SunRise",
+  "IronBull",
+];
+
+function getRandomTokenName() {
+  return TOKEN_NAMES[Math.floor(Math.random() * TOKEN_NAMES.length)];
+}
+
+
+function formatAge(seconds: number): string {
+  if (seconds < 60) return `${seconds}s`;
+  if (seconds < 3600) return `${Math.floor(seconds / 60)}m`;
+  return `${Math.floor(seconds / 3600)}h`;
+}
+
 export function startTokenStream(
   tokens: Token[],
   onUpdate: (updated: Token[]) => void
@@ -13,12 +42,14 @@ export function startTokenStream(
     let updatedTokens = tokens.map((token) => {
       const delta = (Math.random() - 0.5) * 0.05; // ±5%
 
+      const nextAge = token.meta.ageSeconds + 1;
+
       return {
         ...token,
         meta: {
           ...token.meta,
-          ageSeconds: token.meta.ageSeconds + 3,
-          ageLabel: `${token.meta.ageSeconds + 3}s`,
+          ageSeconds: nextAge,
+          ageLabel: formatAge(nextAge),
         },
         metrics: {
           ...token.metrics,
@@ -39,26 +70,26 @@ export function startTokenStream(
      * 2. Occasionally insert a BRAND NEW token (NEW PAIRS)
      */
     if (Math.random() > 0.7) {
-          const newToken: Token = {
-      id: `new-${idCounter}`,
-      name: `New Token ${idCounter}`,
-      symbol: "NEW", // placeholder, real site often omits symbol in UI
-      imageUrl: "/placeholder-token.png", // static placeholder for now
-      stage: "NEW",
-      meta: {
-        address: `0x${Math.random().toString(16).slice(2, 10)}abcd`,
-        shortAddress: `0x${Math.random()
-          .toString(16)
-          .slice(2, 6)}...abcd`,
-        ageSeconds: 0,
-        ageLabel: "0s",
-      },
-      metrics: {
-        marketCap: Math.floor(Math.random() * 5000) + 500,
-        volume: Math.floor(Math.random() * 1000),
-        txCount: 1,
-      },
-    };
+      const newToken: Token = {
+        id: `new-${idCounter}`,
+        name: getRandomTokenName(),
+        symbol: "NEW",
+        imageUrl: "/placeholder-token.png",
+        stage: "NEW",
+        meta: {
+          address: `0x${Math.random().toString(16).slice(2, 10)}abcd`,
+          shortAddress: `0x${Math.random()
+            .toString(16)
+            .slice(2, 6)}...abcd`,
+          ageSeconds: 0,
+          ageLabel: "0s",
+        },
+        metrics: {
+          marketCap: Math.floor(Math.random() * 5000) + 500,
+          volume: Math.floor(Math.random() * 1000),
+          txCount: 1,
+        },
+      };
       idCounter++;
 
       /**
@@ -72,7 +103,7 @@ export function startTokenStream(
     }
 
     onUpdate(updatedTokens);
-  }, 3000);
+  }, 1000); // ✅ 1 second tick
 
   return () => clearInterval(interval);
 }
