@@ -15,6 +15,7 @@ export const tokens: Token[] = [
     meta: {
   address: "0xa99a49dc92ae27ffc996fad4f489a7fb8f8b4444",
   shortAddress: "0xa99a...4444",
+  ageSeconds: 5,
   ageLabel: "5s",
 }
 ,
@@ -33,6 +34,7 @@ export const tokens: Token[] = [
     meta: {
   address: "0xa99a49dc92ae27ffc996fad4f489a7fb8f8b4444",
   shortAddress: "0xa99a...4444",
+  ageSeconds: 5,
   ageLabel: "5s",
 }
 ,
@@ -51,6 +53,7 @@ export const tokens: Token[] = [
     meta: {
   address: "0xa99a49dc92ae27ffc996fad4f489a7fb8f8b4444",
   shortAddress: "0xa99a...4444",
+  ageSeconds: 5,
   ageLabel: "5s",
 }
 ,

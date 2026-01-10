@@ -7,10 +7,13 @@ export interface TokenMetrics {
 }
 
 export interface TokenMeta {
-  address: string;       // full address (for routing)
-  shortAddress: string;  // display version
-  ageLabel: string;
+  address: string;
+  shortAddress: string;
+
+  ageSeconds: number;   // source of truth
+  ageLabel: string;     // derived (e.g. "9s")
 }
+
 
 
 export interface Token {

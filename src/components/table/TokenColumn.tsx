@@ -13,11 +13,11 @@ export function TokenColumn({ title, tokens }: TokenColumnProps) {
         {title}
       </h2>
 
-      <div className="flex flex-col gap-3">
-        {tokens.map((token) => (
-          <TokenCard key={token.id} token={token} />
-        ))}
-      </div>
+          <div className="flex max-h-[calc(100vh-220px)] flex-col gap-3 overflow-y-auto">
+      {tokens.map((token) => (
+        <TokenCard key={token.id} token={token} />
+      ))}
+    </div>
     </div>
   );
 }

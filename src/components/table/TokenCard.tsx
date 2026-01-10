@@ -33,12 +33,11 @@ export function TokenCard({ token }: TokenCardProps) {
         <div className="space-y-1">
           {/* Name row */}
           <div className="flex items-center gap-2">
-            <span className="text-sm font-medium">{token.name}</span>
+            <span className="max-w-[180px] truncate whitespace-nowrap text-sm font-medium">
+  {token.name}
+</span>
             <span className="text-xs text-gray-500">⧉</span>
           </div>
-
-          {/* Subtitle */}
-          <div className="text-xs text-yellow-500">{token.symbol}</div>
 
           {/* Meta icons row */}
           <div className="flex items-center gap-2 text-xs">
