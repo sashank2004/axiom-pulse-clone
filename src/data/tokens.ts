@@ -13,9 +13,11 @@ export const tokens: Token[] = [
       txCount: 4,
     },
     meta: {
-      ageLabel: "5s",
-      address: "0x37...4444",
-    },
+  address: "0xa99a49dc92ae27ffc996fad4f489a7fb8f8b4444",
+  shortAddress: "0xa99a...4444",
+  ageLabel: "5s",
+}
+,
   },
   {
     id: "2",
@@ -29,9 +31,11 @@ export const tokens: Token[] = [
       txCount: 806,
     },
     meta: {
-      ageLabel: "9h",
-      address: "0xd1...4444",
-    },
+  address: "0xa99a49dc92ae27ffc996fad4f489a7fb8f8b4444",
+  shortAddress: "0xa99a...4444",
+  ageLabel: "5s",
+}
+,
   },
   {
     id: "3",
@@ -45,8 +49,10 @@ export const tokens: Token[] = [
       txCount: 7271,
     },
     meta: {
-      ageLabel: "52m",
-      address: "0xe0...4444",
-    },
+  address: "0xa99a49dc92ae27ffc996fad4f489a7fb8f8b4444",
+  shortAddress: "0xa99a...4444",
+  ageLabel: "5s",
+}
+,
   },
 ];

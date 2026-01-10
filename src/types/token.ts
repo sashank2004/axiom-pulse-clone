@@ -7,9 +7,11 @@ export interface TokenMetrics {
 }
 
 export interface TokenMeta {
-  ageLabel: string; // "5s", "9h", "52m"
-  address: string; // "0x37...4444"
+  address: string;       // full address (for routing)
+  shortAddress: string;  // display version
+  ageLabel: string;
 }
+
 
 export interface Token {
   id: string;
