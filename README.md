@@ -6,6 +6,15 @@ This project focuses on **UI precision, performance, real-time behavior, and cle
 
 ---
 
+## 🧠 Design Decisions
+
+- Used a mock WebSocket stream to simulate real-time token updates without backend dependency.
+- Chose Next.js App Router for clear server/client separation and optimal performance.
+- Token data is normalized and strongly typed to ensure scalability.
+- Hover interactions are CSS-driven to avoid unnecessary state and re-renders.
+- UI prioritizes zero layout shift and fast interaction feedback.
+
+
 ## 🔗 Live Links
 
 - **Live Demo (Vercel):** 👉 https://axiom-pulse-clone-9obm.vercel.app/
